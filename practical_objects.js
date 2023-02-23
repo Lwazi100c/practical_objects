@@ -1,3 +1,5 @@
+//Printing item and price function
+
 var printShoppingList = function(list){
     for(let k = 0; k < list.length; k++){
         var currentItem = list[k].itemName;
@@ -5,6 +7,7 @@ var printShoppingList = function(list){
         console.log(`* ${currentItem} @ R${currentPrice}`)
     }
 }
+
 
 var shoppingList = [
     { itemName : 'Bread', price : 11.00 },
@@ -14,6 +17,8 @@ var shoppingList = [
 printShoppingList(shoppingList)
 
 
+
+//printing the total price function
 
 var shoppingList = function(shoppingArray){
     var totalPrice = 0;
