@@ -156,6 +156,90 @@ var mostProfitableDay = function(arrayOfSales){
 
 mostProfitableDay(salesData)
 
+console.log(`\nsome more space\n\n`)
+ 
+//The wordCrush(mostWordsEndWith).
+
+/*This function should:
+take one parameter, the string sentence
+split string by space
+create an empty object to track end letters and increment them
+loop through an array and increment existing and add new
+loop through this object to get hightest letter
+create an array for adding words ending with above letter(letter)
+create an empty object for adding letter and word array(words)
+add highest letter
+
+*/
+
+var mostWordsEndWith = function(stringSentence){
+    var stringArray = stringSentence.split(` `);
+    //stripping a period at the end of the last wor first.
+    var lastWord = ``;
+    for(let i = 0; i < stringArray[stringArray.length - 1].length - 1; i++){
+        lastWord += stringArray[stringArray.length - 1][i];
+    }
+    stringArray[stringArray.length - 1] = lastWord;// replacing with word without period.
+    //console.log(stringArray)
+    //tracking the end letter and getting their totals
+    var totalEndLetters = {};
+    for(let m = 0; m < stringArray.length; m++){
+        //accessing
+        var lastLetter = ``;
+        for(let l = 0; l < stringArray[m].length; l++){
+            if(l === stringArray[m].length - 1){
+                //console.log(stringArray[m][l])
+                if(stringArray[m][l] !== `,` && stringArray[m][l] !== ` `){
+                    if(totalEndLetters[stringArray[m][l]] === undefined){
+                        totalEndLetters[stringArray[m][l]] = 0;
+                    }
+                    totalEndLetters[stringArray[m][l]] += 1;
+                }
+            }
+        }
+        //console.log(lastLetter)
+    }
+    console.log(totalEndLetters)
+
+    //getting highest occuring letter
+    var highLetter = 0;
+    var currentHighLetter = ``;
+    for(let highestLetter in totalEndLetters){
+        if(highLetter <= totalEndLetters[highestLetter]){
+            highLetter = totalEndLetters[highestLetter];
+            currentHighLetter = highestLetter;
+        }
+    }
+    var highLetterWords = [];
+    for(let w = 0; w < stringArray.length; w++){
+        if(stringArray[w].endsWith(currentHighLetter)){
+            highLetterWords.push(stringArray[w]);
+        }
+    }
+    //console.log(highLetterWords)
+    // console.log(`${currentHighLetter} is the most occuring letter with occurance of ${highLetter}`);
+
+    //creating an object to return as final results
+    var finalObject = {};
+    finalObject.letter = currentHighLetter;
+    finalObject.words = highLetterWords;
+    console.log(finalObject)
+}
+
+var sentence = 'Down by the river there is a man that quiver and shiver, but he needs to deliver a packet that he think is a big racket and a packet of of gum.'
+
+mostWordsEndWith(sentence)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
