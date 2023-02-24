@@ -128,6 +128,33 @@ var salesData = [
  
 mostProfitableDepartment(salesData)
 
+//The most profitable day
+
+var mostProfitableDay = function(arrayOfSales){
+    //creating an object of each day's totals
+    var totalForEachDay = {};
+    for(let k = 0; k < arrayOfSales.length; k++){
+       if(totalForEachDay[arrayOfSales[k].day] === undefined){
+            totalForEachDay[arrayOfSales[k].day] = arrayOfSales[k].sales;
+        } 
+        totalForEachDay[arrayOfSales[k].day] += arrayOfSales[k].sales;
+    }
+    //getting the most profitable day
+    var curTotal = 0;
+    var dayName = ``;
+    for(let day in totalForEachDay){
+        if(curTotal <= totalForEachDay[day]){
+            curTotal = totalForEachDay[day];
+            dayName = day;
+
+        }
+    }
+
+    console.log(totalForEachDay)
+    console.log(`Now, the most profitable day with R${curTotal} total price is ${dayName}.`);
+}
+
+mostProfitableDay(salesData)
 
 
 
