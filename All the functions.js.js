@@ -180,7 +180,25 @@ var mostWordsEndWith = function(stringSentence){
         lastWord += stringArray[stringArray.length - 1][i];
     }
     stringArray[stringArray.length - 1] = lastWord;// replacing with word without period.
-    //console.log(stringArray)
+
+    //Stripping any comma on any word
+    var goodWords = ``;
+    for(let c = 0; c < stringArray.length; c++){
+        for(let w = 0; w < stringArray[c].length; w++){
+
+            if(stringArray[c][stringArray[c].length - 1] === `,` && w === stringArray[c].length - 1 ){
+                for(let letter = 0; letter < stringArray[c].length - 1; letter++){
+                    goodWords += stringArray[c][letter];
+                    //stringArray[c] = goodWords;
+                }
+                stringArray[c] = goodWords;
+                console.log(goodWords)
+            }
+        }
+        //console.log(stringArray[c][stringArray[c].length - 1])
+    }
+
+    console.log(stringArray)
     //tracking the end letter and getting their totals
     var totalEndLetters = {};
     for(let m = 0; m < stringArray.length; m++){
